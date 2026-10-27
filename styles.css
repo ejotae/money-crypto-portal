@@ -1,0 +1,292 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0 0 5px 0;
+    color: #0d47a1;
+}
+
+header p {
+    margin: 0;
+    color: #555;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.controls, .portfolio-calculator, .export-controls, .info-box {
+    background: #ffffff;
+    padding: 16px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn {
+    padding: 8px 14px;
+    border: 1px solid #ccd0d5;
+    background: #f5f6f7;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: #e4e6eb;
+}
+
+.btn.active {
+    background: #0d47a1;
+    color: white;
+    border-color: #0d47a1;
+}
+
+.btn.primary {
+    background: #1976d2;
+    color: white;
+    border: none;
+}
+
+.btn.primary:hover {
+    background: #115293;
+}
+
+.info-box {
+    background: #e3f2fd;
+    border-left: 5px solid #1976d2;
+    font-size: 0.95rem;
+}
+
+.chart-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.draggable-sidebar {
+    background: white;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.draggable-sidebar h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.hint {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.draggable-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.drag-item {
+    padding: 10px 12px;
+    background: #1976d2;
+    color: white;
+    cursor: grab;
+    font-weight: 600;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.drag-item:active {
+    cursor: grabbing;
+}
+
+.custom-converter {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.custom-converter input, .custom-converter select, .calc-inputs input, .calc-inputs select, #currencyColorSelect {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.chart-wrapper {
+    background: white;
+    padding: 12px;
+    border: 2px solid #b0bec5;
+    flex: 1;
+    min-width: 300px;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.chart-wrapper.drag-over {
+    border-color: #1976d2;
+    background-color: #f1f8ff;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #444;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+}
+
+.frappe-chart-box {
+    width: 100%;
+    min-height: 320px;
+}
+
+.export-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.calc-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.calc-inputs > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.calc-result {
+    margin-top: 15px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-left: 4px solid #2e7d32;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/*Side-by-side layout */
+@media (min-width: 850px) {
+    .chart-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .draggable-sidebar {
+        width: 260px;
+        flex-shrink: 0;
+    }
+    .draggable-items {
+        flex-direction: column;
+    }
+    .chart-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .chart-wrapper {
+        flex: 1 1 45%;
+    }
+}
+
+button, input, select {
+    max-width: 100%;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible, .drag-item:focus-visible {
+    outline: 3px solid #90caf9;
+    outline-offset: 2px;
+}
+
+.chart-container {
+    min-width: 0;
+    width: 100%;
+}
+
+.chart-wrapper {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.frappe-chart-box {
+    min-width: 0;
+    overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .controls, .draggable-sidebar, .portfolio-calculator, .export-controls, .info-box {
+        padding: 12px;
+    }
+
+    .control-group, .calc-inputs > div {
+        width: 100%;
+    }
+
+    .control-group .btn, .calc-inputs > button, .export-controls .btn {
+        flex: 1 1 auto;
+    }
+
+    .calc-inputs input, .calc-inputs select, .custom-converter input, .custom-converter select {
+        width: 100%;
+    }
+
+    .chart-header {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+}
