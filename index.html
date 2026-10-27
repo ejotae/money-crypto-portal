@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money & Crypto Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.2.4/dist/frappe-charts.min.iife.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Money & Crypto Portal</h1>
+        <p>Compare EUR/USD exchange rates and cryptocurrency prices over time</p>
+    </header>
+    
+    <main>
+        <section class="controls">
+            <div class="control-group">
+                <span class="label">Time Period:</span>
+                <button id="btn-6m" class="btn">6 Months</button>
+                <button id="btn-10y" class="btn">10 Years</button>
+                <button id="btn-20y" class="btn active">20 Years</button>
+            </div>
+
+            <div class="control-group">
+                <label for="currencyColorSelect" class="label">Currency Color:</label>
+                <select id="currencyColorSelect">
+                    <option value="EURUSD">EUR to USD</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="DOGE">Dogecoin (DOGE)</option>
+                    <option value="ETH">Ethereum (ETH)</option>
+                </select>
+                <input type="color" id="chartColor" value="#eb5146">
+            </div>
+
+            <div class="control-group">
+                <button id="btn-add-chart" class="btn primary">+ Add Chart Next to Current</button>
+            </div>
+        </section>
+
+        <section id="data-info-box" class="info-box">
+            <strong>Data Point Inspector:</strong> Click on any point on a chart to view exact historical details and merged values here.
+        </section>
+
+        <section class="chart-layout">
+            <aside class="draggable-sidebar">
+                <h3>Drag to a Chart</h3>
+                <p class="hint">Drag any currency below and drop it onto a chart box to visualize & merge data:</p>
+                <div class="draggable-items">
+                    <div draggable="true" class="drag-item" data-currency="EURUSD">EUR to USD (exchange rate)</div>
+                    <div draggable="true" class="drag-item" data-currency="BTC">Bitcoin (Merged in EUR)</div>
+                    <div draggable="true" class="drag-item" data-currency="DOGE">Dogecoin (Merged in EUR)</div>
+                    <div draggable="true" class="drag-item" data-currency="ETH">Ethereum (Merged in EUR)</div>
+                </div>
+
+                <!--Live Quick Converter -->
+                <div class="custom-converter">
+                    <h3>Quick EUR Converter</h3>
+                    <input type="number" id="quickAmount" value="1" min="0" step="any">
+                    <select id="quickCrypto">
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="DOGE">Dogecoin (DOGE)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                    </select>
+                    <button id="btn-quick-convert" class="btn">Convert Now</button>
+                    <p id="quickConvertResult">Click convert to see live EUR rate.</p>
+                </div>
+            </aside>
+            
+            <div id="chart-container" class="chart-container">
+                <div class="chart-wrapper" id="wrapper-chart-0">
+                    <div class="chart-header">
+                        <span>Chart 1 (drop a currency here)</span>
+                    </div>
+                    <div id="chart-0" class="frappe-chart-box"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="export-controls">
+            <button id="btn-download" class="btn" type="button">Download Selected Chart (SVG)</button>
+            <button id="btn-share-x" class="btn" type="button">Prepare Chart for X</button>
+            <button id="btn-share-reddit" class="btn" type="button">Prepare Chart for Reddit</button>
+            <p class="hint">Sharing downloads a PNG and opens the post composer. Attach the downloaded image in X or Reddit before posting. Some phones also offer direct image sharing.</p>
+        </section>
+
+        <section class="portfolio-calculator">
+            <h2>Crypto Buying & Portfolio Advisor</h2>
+            <p>Enter a past purchase date and amount to calculate current value and get an automated trading recommendation.</p>
+            <div class="calc-inputs">
+                <div>
+                    <label for="buyDate">Purchase Date:</label>
+                    <input type="date" id="buyDate" value="2021-01-15">
+                </div>
+                <div>
+                    <label for="buyAmount">Amount Bought:</label>
+                    <input type="number" id="buyAmount" placeholder="e.g. 2.5" value="1" min="0.0001" step="any">
+                </div>
+                <div>
+                    <label for="cryptoSelect">Cryptocurrency:</label>
+                    <select id="cryptoSelect">
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="DOGE">Dogecoin (DOGE)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                    </select>
+                </div>
+                <button id="btn-calculate" class="btn primary">Calculate Value & Advice</button>
+            </div>
+            <div id="portfolioResult" class="calc-result"></div>
+        </section>
+    </main>
+</body>
+</html>
